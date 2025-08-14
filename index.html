@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connexion - Validation Site</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="login-body">
+  <div class="login-container">
+    <h2>Connexion</h2>
+    <form id="loginForm" novalidate>
+      <input type="text" id="username" placeholder="Nom d'utilisateur" required />
+      <input type="password" id="password" placeholder="Mot de passe" required />
+      <button type="submit">Se connecter</button>
+    </form>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+      const encodedPass = btoa(password);
+
+      const users = await loadUsers();
+      const user = users.find(u => u.username === username && u.password === encodedPass);
+
+      if (user) {
+        localStorage.setItem("user", JSON.stringify(user));
+        window.location.href = "dashboard.html";
+      } else {
+        alert("Identifiant ou mot de passe incorrect");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "accueil": {
+    "header": {
+      "validatedBy": [],        
+      "comments": []            
+    },
+    "hero": {
+      "validatedBy": [],
+      "comments": []
+    }
+  },
+  "annuaire": {
+    "search": {
+      "validatedBy": [],
+      "comments": []
+    }
+  }
+}

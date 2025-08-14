@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Historique</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="filters">
+    <input type="text" id="filter-user" placeholder="Filtrer par utilisateur" />
+    <select id="filter-action">
+      <option value="">Tous les types</option>
+      <option value="validate">Validation</option>
+      <option value="comment">Commentaire</option>
+    </select>
+    <input type="date" id="filter-date" />
+  </div>
+
+  <div id="history-list"></div>
+  <p style="text-align:center; margin-top:20px;">
+    <a href="dashboard.html">← Retour au dashboard</a>
+  </p>
+
+  <script type="module">
+    import { loadHistory, loadUsers } from './js/data.js';
+
+    let history = await loadHistory();
+    const users = await loadUsers();
+    const userMap = Object.fromEntries(users.map(u => [u.username, u.image]));
+
+    function renderHistory(list) {
+      document.getElementById('history-list').innerHTML = list.map(h => {
+        const date = new Date(h.timestamp).toLocaleString();
+        return `
+          <div class="history-item">
+            <img src="${userMap[h.user] || 'images/profil/default.jpg'}" width="30" style="border-radius:50%; vertical-align:middle; margin-right:10px;">
+            <b>${h.user}</b> a ${h.action === 'validate' ? 'validé' : 'commenté'} 
+            <i>${h.section}</i> de la page <i>${h.page}</i>
+            le ${date}
+          </div>
+        `;
+      }).join('');
+    }
+
+    function applyFilters() {
+      let filtered = history;
+      const u = document.getElementById('filter-user').value.trim();
+      const a = document.getElementById('filter-action').value;
+      const d = document.getElementById('filter-date').value;
+
+      if (u) filtered = filtered.filter(h => h.user.toLowerCase().includes(u.toLowerCase()));
+      if (a) filtered = filtered.filter(h => h.action === a);
+      if (d) filtered = filtered.filter(h => h.timestamp.startsWith(d));
+
+      renderHistory(filtered);
+    }
+
+    document.getElementById('filter-user').addEventListener('input', applyFilters);
+    document.getElementById('filter-action').addEventListener('change', applyFilters);
+    document.getElementById('filter-date').addEventListener('input', applyFilters);
+
+    renderHistory(history);
+  </script>
+</body>
+</html>

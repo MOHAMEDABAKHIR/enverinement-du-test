@@ -1,0 +1,19 @@
+[
+  {
+    "id": "accueil",
+    "title": "Page d'accueil",
+    "sections": [
+      { "id": "header", "image": "pages/accueil_header.png", "title": "En-tête" },
+      { "id": "hero", "image": "pages/accueil_hero.png", "title": "Section héro" },
+      { "id": "footer", "image": "pages/accueil_footer.png", "title": "Pied de page" }
+    ]
+  },
+  {
+    "id": "annuaire",
+    "title": "Annuaire",
+    "sections": [
+      { "id": "search", "image": "pages/annuaire_search.png", "title": "Barre de recherche" },
+      { "id": "list", "image": "pages/annuaire_list.png", "title": "Liste des contacts" }
+    ]
+  }
+]

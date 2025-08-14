@@ -1,0 +1,17 @@
+[
+  {
+    "user": "alice",
+    "action": "validate",
+    "page": "accueil",
+    "section": "header",
+    "timestamp": "2025-04-05T10:30:00Z"
+  },
+  {
+    "user": "bob",
+    "action": "comment",
+    "page": "accueil",
+    "section": "hero",
+    "text": "Bouton trop petit",
+    "timestamp": "2025-04-05T11:15:00Z"
+  }
+]

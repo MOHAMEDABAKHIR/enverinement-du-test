@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - Validation</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <div id="user-info">
+      <img id="profile-img" alt="Profil" />
+      <span id="welcome"></span>
+    </div>
+
+    <h1>Pages à valider</h1>
+    <div id="page-cards"></div>
+    <p style="text-align:center; margin-top:30px;">
+      <a href="history.html" style="color:#3498db;">Voir l'historique des actions</a>
+    </p>
+  </div>
+
+  <script type="module">
+    import { loadUsers, loadPages, loadStatus } from './js/data.js';
+
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user) window.location.href = 'index.html';
+
+    document.getElementById('welcome').textContent = `Bonjour ${user.username}`;
+    document.getElementById('profile-img').src = user.image;
+
+    const pages = await loadPages();
+    const status = await loadStatus();
+    const totalUsers = 7;
+    const pageCards = document.getElementById('page-cards');
+
+    pages.forEach(page => {
+      const sectionIds = Object.keys(status[page.id] || {});
+      const validatedCounts = sectionIds.map(id => status[page.id][id].validatedBy.length);
+      const minValidated = Math.min(...validatedCounts);
+      const isFullyValidated = minValidated === totalUsers;
+
+      const card = `
+        <div class="card">
+          <h3>${page.title}</h3>
+          <p>Statut: <strong>${isFullyValidated ? '✅ Validé' : '🟡 En cours'}</strong></p>
+          <a href="validation.html?page=${page.id}">Voir et valider</a>
+        </div>
+      `;
+      pageCards.insertAdjacentHTML('beforeend', card);
+    });
+  </script>
+</body>
+</html>
