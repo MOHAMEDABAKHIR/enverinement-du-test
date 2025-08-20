@@ -1,0 +1,89 @@
+/* Reset de base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Style global */
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #194759, #194D59);
+  color: #F2F2F2;
+}
+
+/* Container */
+.container {
+  background: #F2F2F2;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 350px;
+}
+
+/* Logo */
+.container img {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+/* Titre */
+.container h1 {
+  font-size: 24px;
+  margin-bottom: 25px;
+  color: #194759;
+}
+
+/* Champs input */
+.container input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease;
+  background: #fff;
+  color: #194759;
+}
+
+.container input:focus {
+  border-color: #3C9BA6;
+  box-shadow: 0 0 8px rgba(60, 166, 166, 0.4);
+}
+
+/* Bouton */
+.container button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: #3C9BA6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.container button:hover {
+  background: #3CA6A6;
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .container {
+    width: 90%;
+    padding: 25px;
+  }
+
+  .container h1 {
+    font-size: 20px;
+  }
+}
