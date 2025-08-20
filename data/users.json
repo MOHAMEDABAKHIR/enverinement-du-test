@@ -1,9 +1,0 @@
-[
-  {"id":1,"username":"alice","password":"YWxpY2VwYXNz","image":"images/profil/alice.jpg"},
-  {"id":2,"username":"bob","password":"Ym9icGFzcw==","image":"images/profil/bob.jpg"},
-  {"id":3,"username":"charlie","password":"Y2hhcmxpZXBhc3M=","image":"images/profil/charlie.jpg"},
-  {"id":4,"username":"diana","password":"ZGlhbmFwYXNz","image":"images/profil/diana.jpg"},
-  {"id":5,"username":"eve","password":"ZXZlcGFzcw==","image":"images/profil/eve.jpg"},
-  {"id":6,"username":"frank","password":"ZnJhbmtwYXNz","image":"images/profil/frank.jpg"},
-  {"id":7,"username":"grace","password":"Z3JhY2VwYXNz","image":"images/profil/grace.jpg"}
-]
